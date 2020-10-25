@@ -203,13 +203,10 @@ void deleteRecord(fstream &data){
     fstream dataSementara;
 
     size = getDataSize(data);
-    // 1 - pilih nomor
     cout << "Hapus nomor: ";
     cin >> nomor;
-    // 2 - di pos  isi ini di isi data kosong
     writeData(data,nomor,blankMahasiswa);
-    // 3 - cek data yang ada dari file data.bin, kalau ada 
-    //      data di pindahkan ke file sementara
+    //cek data yang ada dari file data.bin
     dataSementara.open("temp.dat",ios::trunc|ios:: out|ios::in|ios::binary);
 
     offset = 0;
@@ -224,7 +221,6 @@ void deleteRecord(fstream &data){
         }
     }
 
-    // 4 - pindahkan data dari file sementara ke data.bin
     size = getDataSize(dataSementara);
     data.close();
     data.open("data.bin",ios::trunc | ios::out | ios::in | ios::binary);
